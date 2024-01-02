@@ -33,7 +33,7 @@ export default function HomePage() {
     <LayoutEvo>
       <Box as='article' layerStyle='article'>
         <Stack direction={stackDir} alignItems='flex-start' spacing={6}>
-          <ArticleSection article={article} art={{src: 'trilobite.svg', height: 400}}/>
+          <ArticleSection article={article} art={{src: 'trilobite.svg', height: 300}}/>
           <VStack>
             <PictureFrame src={'startled-sm.png'} width={400} height={400}>
               Startled Chipmunk, the one of the first and best meme
