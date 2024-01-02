@@ -1,22 +1,23 @@
 import {Forest} from '@wonderlandlabs/forest';
 import {useEffect, useRef, useState} from 'react';
-import {leafConfig, leafI} from '@wonderlandlabs/forest/lib/types';
+import {leafI} from '@wonderlandlabs/forest/lib/types';
 
+type StateHandler = (state: leafI) => void;
 export default function useForest(
-  seed,
+  seed: unknown,
   // @ts-expect-error untyped data input
   data,
-  onComplete
+  onComplete?: StateHandler
 ) {
 
-  const stateRef = useRef(null);
-  const [value, setValue] = useState({});
+  const stateRef = useRef<leafI | null>(null);
+  const [value, setValue] = useState<Record<string, unknown>>({});
 
   useEffect(() => {
     const seedFn = typeof seed === 'function' ? seed : () => seed;
     if (!stateRef.current) {
       stateRef.current = new Forest(seedFn(data));
-      if (typeof onComplete === 'function') {
+      if (typeof onComplete === 'function' && stateRef.current) {
         onComplete(stateRef.current);
       }
     }

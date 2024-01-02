@@ -7,7 +7,7 @@ export default function AsciiPorn() {
 
   return (
     <Box>
-      <Box layoutStyle='callout-quote'>
+      <Box layerStyle='callout-quote'>
         <Text>
           By Clicking this Button I assert I am 18 years of age or older
         </Text>

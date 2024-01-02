@@ -1,4 +1,4 @@
-import {useBreakpointValue} from '@chakra-ui/react';
+import {StackDirection, useBreakpointValue} from '@chakra-ui/react';
 
 
 export default function useStackDir() {
@@ -18,6 +18,5 @@ export default function useStackDir() {
     }
   }, {fallback: 'md'});
 
-  console.log('stackDir is ', stackDir )
-  return stackDir.stack;
+  return (stackDir?.stack || 'column') as StackDirection;
 }

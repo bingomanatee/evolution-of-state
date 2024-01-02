@@ -17,6 +17,7 @@ module.exports = {
         "indent": ["error", 2],
         'curly': 1,
        '@typescript-eslint/no-unused-vars' : 0,
+        'no-unused-vars': 'warn',
         "@typescript-eslint/quotes": [
             "error",
             "single",

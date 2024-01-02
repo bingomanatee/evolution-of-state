@@ -4,7 +4,8 @@ import {isArticleError} from '~/types';
 
 export function articleStateFactory(names: string[]) {
   if (!Array.isArray(names)) {
-    throw new Error('bd argument to articleStateFactory:', names);
+    console.error('articleStateFactory passed ', names);
+    throw new Error('bad argument to articleStateFactory');
   }
   return ({
     $value: {

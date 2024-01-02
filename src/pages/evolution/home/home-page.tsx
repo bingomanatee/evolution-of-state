@@ -5,29 +5,27 @@ import useForest from '~/hooks/useForest';
 import {articleStateFactory} from '~/lib/article-state-factory';
 import {leafI} from '@wonderlandlabs/forest/lib/types';
 import useStackDir from '~/hooks/useStackDir';
-import useIsSmall from '~/hooks/useIsSmall';
 import ArticleSection from '~/components/ArticleSection';
 import {PictureFrame} from '~/components/picture-frame';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
+import {ASFvalue, isArticleError} from '~/types';
 
 const ARTICLE_NAME = 'home.md';
 
 export default function HomePage() {
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME], (state: leafI) => state.do.load());
+  const {
     article,
     done,
-    articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME], (state: leafI) => state.do.load());
-
+  } = value as ASFvalue;
   const stackDir = useStackDir();
-  const isSmall = useIsSmall();
+  // const isSmall = useIsSmall();
 
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
+  }
   if (!state || !done || !article) {
     return <Spinner/>
-  }
-
-  if (state.$.errors()) {
-    return <ArticleErrorPage article={article}/>
   }
 
   return (
@@ -42,7 +40,7 @@ export default function HomePage() {
           </VStack>
         </Stack>
       </Box>
-      <ButtonNavEvo page={'home'} />
+      <ButtonNavEvo page={'home'}/>
     </LayoutEvo>
   )
 }

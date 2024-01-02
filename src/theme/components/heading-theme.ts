@@ -53,6 +53,7 @@ const callout = defineStyle({
 })
 
 const headingTheme = defineStyleConfig({
+  //@ts-expect-error  i think this works anyway
   fontFamily: 'heading',
   fontWeight: 800,
   _dark: {

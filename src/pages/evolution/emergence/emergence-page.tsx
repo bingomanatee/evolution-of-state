@@ -1,11 +1,7 @@
-import {Box, Center, Heading, HStack, Image, Spinner, Text, VStack} from '@chakra-ui/react';
-import {memo, useEffect, useState} from 'react';
-import {Article, ArticleError, ArticlePreLoaded, isArticleError, isArticlePreLoaded} from '~/types';
-import {Content} from '~/lib/articles/content';
+import {Box, Heading, HStack, Spinner, VStack} from '@chakra-ui/react';
+import { ASFvalue, isArticleError, isArticlePreLoaded} from '~/types';
 import Markdown from 'react-markdown';
-import {TITLE_RE} from '~/lib/constants';
 import chakraComponents from '~/theme/chakra-components';
-import {NextButton} from '~/components/next-button';
 import {PictureFrame} from '~/components/picture-frame';
 import ArticleErrorPage from '~/components/article-error-page';
 import {Art} from '~/components/art';
@@ -14,7 +10,6 @@ import {articleStateFactory} from '~/lib/article-state-factory';
 import {leafI} from '@wonderlandlabs/forest/lib/types';
 import useForest from '~/hooks/useForest';
 import {withoutTitle} from '~/lib/without-title';
-import chakraComponentsSidebar from '~/theme/chakra-components-sidebar';
 import Callout from '~/components/callout';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
 
@@ -23,19 +18,18 @@ const ARTICLE_NAME = 'emergence.md';
 
 export default function EmergencePage() {
 
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME, 'history-of-js.md'], (state: leafI) => state.do.load());
+  const {
     article,
     articles,
-    done
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME, 'history-of-js.md'], (state: leafI) => state.do.load());
+  } = value as ASFvalue;
 
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
+  }
 
   if (!state || !article || isArticlePreLoaded(article)) {
     return <Spinner/>
-  }
-
-  if (state.$.errors()) {
-    return <ArticleErrorPage article={article}/>
   }
 
   return (

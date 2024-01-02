@@ -34,7 +34,7 @@ function ButtonNavBase({page}: { page: string }) {
   if (!info) {
     return <Text>No page for {page}</Text>
   }
-  const {current, indexNumber, prev, next} = info;
+  const {indexNumber, prev, next} = info;
   return (
     <Box layerStyle='buttons'>
       <Center>

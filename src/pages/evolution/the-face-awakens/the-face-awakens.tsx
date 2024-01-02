@@ -1,6 +1,4 @@
-import {Box, Center, Heading, HStack, Image, Spinner, Stack, Text, useBreakpointValue, VStack} from '@chakra-ui/react';
-import {TITLE_RE} from '~/lib/constants';
-import chakraComponents from '~/theme/chakra-components';
+import {Box, Heading, Spinner, Stack, VStack} from '@chakra-ui/react';
 import {PictureFrame} from '~/components/picture-frame';
 import ArticleErrorPage from '~/components/article-error-page';
 import {Art} from '~/components/art';
@@ -13,30 +11,27 @@ import useIsSmall from '~/hooks/useIsSmall';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
 import ArticleSection from '~/components/ArticleSection';
 import Callout from '~/components/callout';
+import {ASFvalue, isArticleError} from '~/types';
 
 const ARTICLE_NAME = 'the-face-awakens.md';
 const ARTICLE_SUB_NAME = 'early-state.md';
 
-function withoutTitle(text: string) {
-  return text.replace(TITLE_RE, '');
-}
-
 export default function TheFaceAwakens() {
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME, 'face-2.md', 'face-3.md', ARTICLE_SUB_NAME, 'history-of-js.md', 'node.md'], (state: leafI) => state.do.load());
+  const {
     article,
     done,
     articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME, 'face-2.md', 'face-3.md', ARTICLE_SUB_NAME, 'history-of-js.md', 'node.md'], (state: leafI) => state.do.load());
-
+  } = value as ASFvalue;
   const stackDir = useStackDir();
   const isSmall = useIsSmall();
 
-  if (!state || !done || !article) {
-    return <Spinner/>
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
   }
 
-  if (state.$.errors()) {
-    return <ArticleErrorPage article={article}/>
+  if (!state || !done || !article) {
+    return <Spinner/>
   }
 
   return (

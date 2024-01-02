@@ -3,7 +3,7 @@ import {articleStateFactory} from '~/lib/article-state-factory';
 import {leafI} from '@wonderlandlabs/forest/lib/types';
 import useStackDir from '~/hooks/useStackDir';
 import useIsSmall from '~/hooks/useIsSmall';
-import {Spinner, VStack, Box, Heading, Text, Stack} from '@chakra-ui/react';
+import {Spinner, VStack, Box, Heading, Stack} from '@chakra-ui/react';
 import ArticleErrorPage from '~/components/article-error-page';
 import ArticleSection from '~/components/ArticleSection';
 import AsciiPorn from '~/components/AsciiPorn';
@@ -11,24 +11,26 @@ import Paragraph from '~/components/Paragraph';
 import {PictureFrame} from '~/components/picture-frame';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
 import LayoutEvo from '~/pages/evolution/layout-evo';
+import {ASFvalue, isArticleError} from '~/types';
 
 const ARTICLE_NAME = 'bbs.md';
 export default function FromTheDepthsPage() {
 
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME], (state: leafI) => state.do.load());
+  const {
     article,
     done,
-    articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME], (state: leafI) => state.do.load());
+  } = value as ASFvalue;
 
   const stackDir = useStackDir();
   const isSmall = useIsSmall();
-  if (!state || !done || !article) {
-    return <Spinner/>
+
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
   }
 
-  if (state.$.errors()) {
-    return <ArticleErrorPage article={article}/>
+  if (!state || !done || !article) {
+    return <Spinner/>
   }
 
   return <LayoutEvo>

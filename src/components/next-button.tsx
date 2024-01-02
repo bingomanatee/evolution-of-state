@@ -1,7 +1,7 @@
 import {Center, Image, useBoolean} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
 
-export const NextButton = ({to, out, back}: { to: string, back?: boolean }) => {
+export const NextButton = ({to, out, back}: { to: string, out?: boolean, back?: boolean }) => {
   const [hov, hc] = useBoolean(false);
   return (
     <Center>

@@ -1,7 +1,6 @@
-import {Box, Center, Heading, HStack, Spinner, Stack, useBreakpointValue, VStack, Image} from '@chakra-ui/react';
+import {Box, Heading, Spinner, Stack, VStack, Image} from '@chakra-ui/react';
 import Markdown from 'react-markdown';
 import chakraComponents from '~/theme/chakra-components';
-import {NextButton} from '~/components/next-button';
 import {PictureFrame} from '~/components/picture-frame';
 import {Art} from '~/components/art';
 import ArticleErrorPage from '~/components/article-error-page';
@@ -12,35 +11,28 @@ import {leafI} from '@wonderlandlabs/forest/lib/types';
 import {withoutTitle} from '~/lib/without-title';
 import chakraComponentsSidebar from '~/theme/chakra-components-sidebar';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
+import {ASFvalue, isArticleError} from '~/types';
+import useStackDir from '~/hooks/useStackDir';
 
 const ARTICLE_NAME = 'origins.md';
 
 export default function OriginsPage() {
 
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME, 'vrml.md'], (state: leafI) => state.do.load());
+  const {
     article,
     done,
     articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME, 'vrml.md'], (state: leafI) => state.do.load());
+  } = value as ASFvalue;
 
-  const stackDir = useBreakpointValue({
-    sm: {
-      stack: 'column',
-    },
-    md: {
-      stack: 'row'
-    },
-    lg: {
-      stack: 'row'
-    }
-  }, {fallback: 'md'});
+  const stackDir = useStackDir();
+
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
+  }
 
   if (!state || !done || !article) {
     return <Spinner/>
-  }
-
-  if (state.$.errors()) {
-    return <ArticleErrorPage article={article}/>
   }
 
   return (

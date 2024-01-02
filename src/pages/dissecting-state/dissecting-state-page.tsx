@@ -1,17 +1,16 @@
-import {Box, Center, Heading, HStack, Spinner, Stack, VStack} from '@chakra-ui/react';
+import {Box, Heading, Spinner, Stack, VStack} from '@chakra-ui/react';
 import Markdown from 'react-markdown';
 import {TITLE_RE} from '~/lib/constants';
 import chakraComponents from '~/theme/chakra-components';
 import {Art} from '~/components/art';
 import ArticleErrorPage from '~/components/article-error-page';
-import LayoutEvo from '~/pages/evolution/layout-evo';
 import useForest from '~/hooks/useForest';
 import {leafI} from '@wonderlandlabs/forest/lib/types';
 import {articleStateFactory} from '~/lib/article-state-factory';
 import ButtonNav from '~/pages/button-nav';
 import Layout from '~/pages/layout';
 import useStackDir from '~/hooks/useStackDir';
-import useIsSmall from '~/hooks/useIsSmall';
+import {ASFvalue, isArticleError} from '~/types';
 
 const ARTICLE_NAME = 'dissecting-state.md';
 
@@ -20,20 +19,19 @@ function withoutTitle(text: string) {
 }
 
 export default function DissectingStatePage() {
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME], (state: leafI) => state.do.load());
+  const {
     article,
     done,
-    articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME], (state: leafI) => state.do.load());
-
+  } = value as ASFvalue;
   const stackDir = useStackDir();
-  const isSmall = useIsSmall();
+  //const isSmall = useIsSmall();
   
   if (!state || !done || !article) {
     return <Spinner/>
   }
 
-  if (state.$.errors()) {
+  if (isArticleError(article)) {
     return <ArticleErrorPage article={article}/>
   }
 

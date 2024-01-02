@@ -1,8 +1,7 @@
-import {Box, Center, Heading, HStack, Image, Spinner, Stack, Text, useBreakpointValue, VStack} from '@chakra-ui/react';
+import {Box, Heading, Spinner, Stack, VStack} from '@chakra-ui/react';
 import Markdown from 'react-markdown';
 import {TITLE_RE} from '~/lib/constants';
 import chakraComponents from '~/theme/chakra-components';
-import {NextButton} from '~/components/next-button';
 import {PictureFrame} from '~/components/picture-frame';
 import ArticleErrorPage from '~/components/article-error-page';
 import {Art} from '~/components/art';
@@ -10,12 +9,11 @@ import LayoutEvo from '~/pages/evolution/layout-evo';
 import useForest from '~/hooks/useForest';
 import {articleStateFactory} from '~/lib/article-state-factory';
 import {leafI} from '@wonderlandlabs/forest/lib/types';
-import chakraComponentsSidebar from '~/theme/chakra-components-sidebar';
 import useStackDir from '~/hooks/useStackDir';
-import useIsSmall from '~/hooks/useIsSmall';
-import chakraComponentsQuote from '~/theme/chakra-components-quote';
+// import useIsSmall from '~/hooks/useIsSmall';
 import Callout from '~/components/callout';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
+import {ASFvalue, isArticle, isArticleError} from '~/types';
 
 const ARTICLE_NAME = 'one-page.md';
 const ARTICLE_SUB_NAME = 'early-state.md';
@@ -25,23 +23,23 @@ function withoutTitle(text: string) {
 }
 
 export default function OnePage() {
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME, ARTICLE_SUB_NAME, 'node.md'], (state: leafI) => state.do.load());
+  const {
     article,
     done,
     articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME, ARTICLE_SUB_NAME, 'node.md'], (state: leafI) => state.do.load());
+  } = value as ASFvalue;
 
   const stackDir =useStackDir();
-  const isSmall = useIsSmall();
+  // const isSmall = useIsSmall();
 
-  if (!state || !done || !article) {
-    return <Spinner/>
-  }
-
-  if (state.$.errors()) {
+  if (isArticleError(article)) {
     return <ArticleErrorPage article={article}/>
   }
 
+  if (!state || !done || !isArticle(article)) {
+    return <Spinner/>
+  }
 
   return (
     <LayoutEvo>

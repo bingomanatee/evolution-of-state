@@ -10,8 +10,8 @@ function sizeValue(size: number | number[]) {
 
 export function PictureFrame({src, width, height, children}: {
   src: string,
-  width: number,
-  height: number,
+  width: number | number[],
+  height: number | number[],
   children: ReactNode
 }) {
   const [isSmall] = useMediaQuery('(max-width: 700px)')

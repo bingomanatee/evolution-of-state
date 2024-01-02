@@ -1,11 +1,8 @@
-import {Box, Center, Heading, HStack, Image, Spinner, Text, useBreakpointValue, VStack} from '@chakra-ui/react';
-import {memo, useEffect, useState} from 'react';
-import {Article, ArticleError, ArticlePreLoaded, isArticleError, isArticlePreLoaded} from '~/types';
-import {Content} from '~/lib/articles/content';
+import {Box, Heading, Spinner, Stack, VStack} from '@chakra-ui/react';
+
 import Markdown from 'react-markdown';
 import {TITLE_RE} from '~/lib/constants';
 import chakraComponents from '~/theme/chakra-components';
-import {NextButton} from '~/components/next-button';
 import {PictureFrame} from '~/components/picture-frame';
 import ArticleErrorPage from '~/components/article-error-page';
 import {Art} from '~/components/art';
@@ -16,6 +13,7 @@ import {articleStateFactory} from '~/lib/article-state-factory';
 import {leafI} from '@wonderlandlabs/forest/lib/types';
 import useStackDir from '~/hooks/useStackDir';
 import ButtonNavEvo from '~/pages/evolution/button-nav-evo';
+import {ASFvalue, isArticleError} from '~/types';
 
 const ARTICLE_NAME = 'master-and-server.md';
 const ARTICLE_SUB_NAME = 'unit-testing.md'
@@ -25,27 +23,27 @@ function withoutTitle(text: string) {
 
 export default function MasterAndServerPage() {
 
-  const [{
+  const [value, state] = useForest(articleStateFactory, [ARTICLE_NAME, ARTICLE_SUB_NAME], (state: leafI) => state.do.load());
+  const {
     article,
     done,
     articles
-  }, state] = useForest(articleStateFactory, [ARTICLE_NAME, ARTICLE_SUB_NAME], (state: leafI) => state.do.load());
-
+  } = value as ASFvalue;
   const stackDir = useStackDir();
+
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
+  }
 
   if (!state || !done || !article) {
     return <Spinner/>
-  }
-
-  if (state.$.errors()) {
-    return <ArticleErrorPage article={article}/>
   }
 
   return (
     <LayoutEvo>
       <Box as='article' layerStyle='article'>
         <Heading as='h1' variant='page-head'>{article.title}</Heading>
-        <HStack alignItems='flex-start' spacing={6}>
+        <Stack direction={stackDir} alignItems='flex-start' spacing={6}>
           <VStack>
             <Box>
               <Art src="/img/dimetradon.svg" height={200}/>
@@ -64,7 +62,7 @@ export default function MasterAndServerPage() {
               Rasmus Lerdorf, inventor of PHP
             </PictureFrame>
           </VStack>
-        </HStack>
+        </Stack>
 
         <ButtonNavEvo page={'master-and-server'}/>
       </Box>
