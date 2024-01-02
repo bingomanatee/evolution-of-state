@@ -1,0 +1,68 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+ul, ol {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+
+li {
+  padding-left: 0.5em;
+  margin-bottom: 0.25em;
+  font-size: 0.9em;
+  line-height: 1.25;
+}
+
+a {
+  color: darkblue !important;
+  text-decoration: underline !important;
+}
+
+pre.ascii {
+  background-color: #282828;
+  line-height: 80%;
+  font-size: 0.4em;
+  color: white;
+  font-family: 'Courier Prime', Courier, monospace;
+  width: 100%;
+}
+pre.ascii code {
+  white-space: pre-line;
+}
+
+.scenery {
+  background: rgb(84,101,124);
+  background: linear-gradient(180deg,
+  hsl(0, 0%, 100%) 0%,
+  hsl(168, 42%, 43%) 27%,
+  hsl(168, 50%, 38%) 31%,
+  hsl(181, 38%, 36%) 46%,
+  hsl(196, 36%, 52%) 55%,
+  hsl(196, 30%, 78%) 80%,
+  hsl(0, 0%, 100%) 100%
+  );
+  box-shadow: 0 0 8vw rgba(255,255,255,0.999) inset,
+  0 0 8vw rgba(255,255,255,0.999) inset,
+  0 0 8vw rgba(255,255,255,0.999) inset;
+}
