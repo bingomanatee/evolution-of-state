@@ -1,4 +1,5 @@
-## Delayed Gratification: Async and State
+# Delayed Gratification: 
+## Async and State
 
 Async is problematic when it comes to state systems. The ideal pattern an action
 is for the change to be processed *immediately*, prepared in a nice little bubble

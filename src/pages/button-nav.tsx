@@ -5,6 +5,7 @@ import {memo} from 'react';
 const pageList = [
   'nautilus',
   'design-patterns',
+  'async',
   'dissecting-state',
 ]
 
