@@ -31,12 +31,13 @@ export default function MasterAndServerPage() {
   } = value as ASFvalue;
   const stackDir = useStackDir();
 
-  if (isArticleError(article)) {
-    return <ArticleErrorPage article={article}/>
-  }
 
   if (!state || !done || !article) {
     return <Spinner/>
+  }
+
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
   }
 
   return (

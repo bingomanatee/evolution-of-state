@@ -15,10 +15,10 @@ import MasterAndServerPage from '~/pages/evolution/master-and-server/master-and-
 import OnePage from '~/pages/evolution/one-page/one-page';
 import TheFaceAwakens from '~/pages/evolution/the-face-awakens/the-face-awakens';
 import DissectingStatePage from '~/pages/dissecting-state/dissecting-state-page';
-import AsyncPage from '~/pages/nautilus/async-page';
+import AsyncPage from '~/pages/async/async-page';
 import FromTheDepthsPage from '~/pages/evolution/from-the-depths/from-the-depths-page';
 import DesignPatternsPage from '~/pages/design-patterns/design-patterns-page';
-import NautilusPage from '~/pages/async/nautilus-page';
+import NautilusPage from '~/pages/nautilus/nautilus-page';
 
 const router = createBrowserRouter([
   {

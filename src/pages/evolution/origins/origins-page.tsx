@@ -27,12 +27,12 @@ export default function OriginsPage() {
 
   const stackDir = useStackDir();
 
-  if (isArticleError(article)) {
-    return <ArticleErrorPage article={article}/>
-  }
-
   if (!state || !done || !article) {
     return <Spinner/>
+  }
+
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
   }
 
   return (

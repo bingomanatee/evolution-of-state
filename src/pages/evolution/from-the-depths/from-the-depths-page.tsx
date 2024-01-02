@@ -25,12 +25,12 @@ export default function FromTheDepthsPage() {
   const stackDir = useStackDir();
   const isSmall = useIsSmall();
 
-  if (isArticleError(article)) {
-    return <ArticleErrorPage article={article}/>
-  }
-
   if (!state || !done || !article) {
     return <Spinner/>
+  }
+
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
   }
 
   return <LayoutEvo>

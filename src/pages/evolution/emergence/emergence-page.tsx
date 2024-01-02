@@ -24,12 +24,13 @@ export default function EmergencePage() {
     articles,
   } = value as ASFvalue;
 
-  if (isArticleError(article)) {
-    return <ArticleErrorPage article={article}/>
-  }
+
 
   if (!state || !article || isArticlePreLoaded(article)) {
     return <Spinner/>
+  }
+  if (isArticleError(article)) {
+    return <ArticleErrorPage article={article}/>
   }
 
   return (
