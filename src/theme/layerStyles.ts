@@ -39,7 +39,8 @@ export default {
   article: {
     px: [2, 3, 4, 5],
     py: [1, 2, 3, 4],
-    width: '100%'
+    width: '100%',
+    mb: '100px',
   },
   callout: CALLOUT,
   quote: {
@@ -63,7 +64,6 @@ export default {
   },
   buttons: {
     py: [4, 5, 7],
-    mb: '40px',
-    bgGradient: 'linear(to-b, white, white, white, blackAlpha.200)'
+    mb: '140px',
   }
 }
