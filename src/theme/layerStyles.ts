@@ -63,6 +63,7 @@ export default {
   },
   buttons: {
     py: [4, 5, 7],
-    mb: 8
+    mb: '40px',
+    bgGradient: 'linear(to-b, white, white, white, blackAlpha.200)'
   }
 }

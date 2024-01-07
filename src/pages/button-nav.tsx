@@ -34,7 +34,7 @@ function ButtonNavBase({page}: { page: string }) {
   }
   const {indexNumber, prev, next} = info;
   return (
-    <Box layerStyle='buttons' mb='30px'>
+    <Box layerStyle='buttons'>
       <Center>
         <HStack>
           {prev ? <NextButton back to={'/' + prev}></NextButton> : null}
