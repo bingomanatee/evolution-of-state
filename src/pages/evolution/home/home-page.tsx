@@ -36,7 +36,7 @@ export default function HomePage() {
           <ArticleSection article={article} art={{src: 'trilobite.svg', height: 300}}/>
           <VStack>
             <PictureFrame src={'startled-sm.png'} width={400} height={400}>
-              Startled Chipmunk, the one of the first and best meme
+              Startled Chipmunk, the one of the first and best memes
             </PictureFrame>
           </VStack>
         </Stack>

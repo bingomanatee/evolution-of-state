@@ -41,7 +41,7 @@ export default function EmergencePage() {
         <HStack alignItems='flex-start' spacing={6}>
           <VStack>
             <Box>
-              <Art src="/img/acanthostega.svg" height={400}/>
+              <Art src="/img/dimetradon.svg" height={400}/>
               <Markdown components={chakraComponents}>{withoutTitle(article.text)}</Markdown>
 
               <Callout article={articles[1]}/>

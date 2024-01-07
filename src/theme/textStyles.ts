@@ -7,7 +7,8 @@ export default {
     fontFamily: 'caption',
     fontSize: ['xs', 'xs', 'xm'],
     lineHeight: 1.1,
-    color: 'caption'
+    color: 'caption',
+    fontWeight: 700
   },
   'p-callout': {
     py: 2,

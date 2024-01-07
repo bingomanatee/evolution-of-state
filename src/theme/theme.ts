@@ -18,7 +18,7 @@ const theme = extendTheme({
     heading: `'Nunito Sans', sans-serif`,
     display: 'Skranji, Helvetica, sans-serif',
     body: `'Raleway', sans-serif`,
-    caption: `'Courier Prime', monospace`
+    caption: `'DM Sans', monospace`
   },
   fontSizes: {
     xs: '0.7rem',
