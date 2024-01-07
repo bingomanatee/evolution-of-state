@@ -45,7 +45,7 @@ export default function TheFaceAwakens() {
             <Box>
               <ArticleSection article={article} noTitle/>
 
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/MkfsSUBlqUY?si=Zk-1DAOiMC1FlCcD"
+              <iframe width="500px" height="315" src="https://www.youtube.com/embed/MkfsSUBlqUY?si=Zk-1DAOiMC1FlCcD"
                 title="YouTube video player" frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen></iframe>

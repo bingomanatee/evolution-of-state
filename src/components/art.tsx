@@ -1,10 +1,12 @@
 import {memo} from 'react';
-import {Center, Image} from '@chakra-ui/react';
+import {Flex, Box, Center, Image} from '@chakra-ui/react';
 
 export const Art = memo(({src, height, ...rest}: { src: string, height: number } & Record<string, unknown>) => (
-  <div className='scenery' style={ {height: height + 'px'}}>
-    <Center>
-      <Image src={src} height={height} {...rest}></Image>
-    </Center>
-  </div>
+  <Flex id="art" direction="column" alignItems="stretch">
+    <Box flexShrink={1} className='scenery' height={ height + 'px'}>
+      <Center>
+        <Image src={src} maxWidth='80%' height={height} {...rest}></Image>
+      </Center>
+    </Box>
+  </Flex>
 ))

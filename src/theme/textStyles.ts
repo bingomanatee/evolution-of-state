@@ -1,7 +1,7 @@
 export default {
   p: {
     fontFamily: 'body',
-    fontSize: ['sm', 'sm', 'md']
+    fontSize: ['1.2em', '1em', '1em']
   },
   caption: {
     fontFamily: 'caption',

@@ -9,7 +9,7 @@ const pageHead = defineStyle({
 const headingHead = defineStyle({
   fontWeight: '800',
   fontFamily: 'heading',
-  fontSize: ['24px', '30px', '36x'],
+  fontSize: ['20px', '24px', '26px'],
   color: 'white',
   ml: 8,
   my: 2,

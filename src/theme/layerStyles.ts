@@ -26,7 +26,7 @@ export default {
     overflow: 'auto'
   },
   p: {
-    py: 2
+    py: 2, width: '100%'
   },
   'p-callout': {
     py: 1,
