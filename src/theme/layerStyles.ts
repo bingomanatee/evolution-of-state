@@ -62,6 +62,7 @@ export default {
     pb: 2
   },
   buttons: {
-    py: [4, 5, 7]
+    py: [4, 5, 7],
+    mb: 8
   }
 }
