@@ -56,7 +56,7 @@ export default {
   'photo-photo': {},
 
   caption: {
-    backgroundColor: 'caption-back',
+    backgroundColor: 'photo-cap-box',
     px: 3,
     pt: 1,
     pb: 2

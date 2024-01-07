@@ -65,10 +65,10 @@ const headingTheme = defineStyleConfig({
     'h1': h1,
     'h2': h2,
     'h3': h3,
-    'h2-sidebar': {...h2, fontSize: ['18px', '20px', '22px']},
-    'h3-sidebar': {...h3, fontSize: ['12px', '14px', '16px']},
-    'h2-quote': {...h2, fontSize: ['18px', '20px', '22px']},
-    'h3-quote': {...h3, fontSize: ['14px', '18px', '20px']},
+    'h2-sidebar': {...h2, color: 'caption-head'},
+    'h3-sidebar': {...h3, color: 'caption-head'},
+    'h2-quote': {...h2, color: 'quote-head'},
+    'h3-quote': {...h3, color: 'quote-head'},
     'callout': callout,
     'quote': {...callout, color: 'quote-head'}
   }

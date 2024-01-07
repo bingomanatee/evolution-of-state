@@ -1,7 +1,7 @@
 export default {
   'heading-bg': '#00253d',
   'caption': 'hsl(14,20%,50%)',
-  'caption-back': 'hsl(65,59%,88%)',
+  'photo-cap-box': 'hsl(65,59%,88%)',
   'callout-back': 'hsl(194,40%,75%)',
   'callout-back-2': 'hsl(194,20%,90%)',
   'callout-head': 'hsl(194,80%,20%)',
