@@ -9,7 +9,7 @@ export const NextButton = ({to, out, back}: { to: string, out?: boolean, back?: 
         <Image
           onMouseEnter={hc.on}
           onMouseLeave={hc.off}
-          width='5vw' filter="auto" brightness={hov ? '200%' : '100%'}
+          width={['120px','80px']} filter="auto" brightness={hov ? '200%' : '100%'}
           src={`/img/${out ? 'out' : back ? 'back' : 'next'}.svg`}></Image>
       </Link>
     </Center>

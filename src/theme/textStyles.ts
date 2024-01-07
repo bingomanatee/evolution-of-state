@@ -12,10 +12,10 @@ export default {
   },
   'p-callout': {
     py: 2,
-    fontSize: '0.8em'
+    fontSize: ['1em', '0.8em']
   },
   'p-quote': {
     py: 2,
-    fontSize: '0.8em'
+    fontSize: ['1em', '0.8em']
   },
 }
